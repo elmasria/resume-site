@@ -12,22 +12,22 @@ var bio = {
 	"skills" : ["programming", "development", "training", "organizing", "team worker", "leading"],
 	"biopic" : "/images/profil-pic.jpg",
 	display: function(){
-		var headerName = HTMLheaderName.replace('%data%',bio.name);
-		var headerRole = HTMLheaderRole.replace('%data%',bio.role);
-		var headerbioPic = HTMLbioPic.replace('%data%', bio.biopic);
-		var headerwelcomeMsg = HTMLwelcomeMsg.replace('%data%',bio.welcomeMessage);
+		var headerName = HTMLheaderName.replace("%data%",bio.name);
+		var headerRole = HTMLheaderRole.replace("%data%",bio.role);
+		var headerbioPic = HTMLbioPic.replace("%data%", bio.biopic);
+		var headerwelcomeMsg = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 		$("#header").prepend(headerName + headerRole);
 		$("#header").append(headerbioPic);
 		$("#header").append(headerwelcomeMsg);
 		$("#header").append(HTMLskillsStart);
-		for(item in bio.contacts){
+		for(var item in bio.contacts){
 			var contactcontactGeneric = HTMLcontactGeneric.replace("%contact%",item);
 			contactcontactGeneric = contactcontactGeneric.replace("%data%",bio.contacts[item]);
 			$("#topContacts").append(contactcontactGeneric);
 			$("#footerContacts").append(contactcontactGeneric);
 		}
-		for(item in bio.skills){
-			$("#skills").append(HTMLskills.replace("%data%",bio.skills[item]));
+		for(var itemCount = 0; itemCount < bio.skills.length; itemCount++){
+			$("#skills").append(HTMLskills.replace("%data%",bio.skills[itemCount]));
 		}
 	}
 };
@@ -55,7 +55,7 @@ var education = {
 		"url":"https://classroom.udacity.com/nanodegrees/nd001/syllabus"
 	}],
 	display:function(){
-		for(item in education.schools){
+		for(var item in education.schools){
 			$("#education").append(HTMLschoolStart);
 			$(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[item].name)+
 				HTMLschoolDegree.replace("%data%", education.schools[item].degree)+
@@ -64,12 +64,12 @@ var education = {
 				HTMLschoolMajor.replace("%data%", education.schools[item].majors));
 		}
 		$("#education").append(HTMLonlineClasses);
-		for(item in education.onlineCourses){
+		for(var itemCount = 0; itemCount< education.onlineCourses.length; itemCount++){
 			$("#education").append(HTMLschoolStart);
-			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[item].title)+
-				HTMLonlineSchool.replace("%data%", education.onlineCourses[item].school)+
-				HTMLonlineDates.replace("%data%", education.onlineCourses[item].date)+
-				HTMLonlineURL.replace("%data%", education.onlineCourses[item].url));
+			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[itemCount].title)+
+				HTMLonlineSchool.replace("%data%", education.onlineCourses[itemCount].school)+
+				HTMLonlineDates.replace("%data%", education.onlineCourses[itemCount].date)+
+				HTMLonlineURL.replace("%data%", education.onlineCourses[itemCount].url));
 		}
 	}
 };
@@ -92,14 +92,14 @@ var work = {
 	}
 	],
 	display: function(){
-		for(item in work.jobs){
+		for(var itemCount = 0; itemCount < work.jobs.length; itemCount++){
 		$("#workExperience").append(HTMLworkStart);
 		$(".work-entry:last").append(
-			HTMLworkEmployer.replace("%data%",work.jobs[item].employer) +
-			HTMLworkTitle.replace("%data%",work.jobs[item].title) +
-			HTMLworkDates.replace("%data%",work.jobs[item].dates) +
-			HTMLworkLocation.replace("%data%",work.jobs[item].location) +
-			HTMLworkDescription.replace("%data%",work.jobs[item].description)
+			HTMLworkEmployer.replace("%data%",work.jobs[itemCount].employer) +
+			HTMLworkTitle.replace("%data%",work.jobs[itemCount].title) +
+			HTMLworkDates.replace("%data%",work.jobs[itemCount].dates) +
+			HTMLworkLocation.replace("%data%",work.jobs[itemCount].location) +
+			HTMLworkDescription.replace("%data%",work.jobs[itemCount].description)
 			);
 		}
 	}
@@ -118,14 +118,14 @@ var projects = {
 		"images":["/images/IRHC01.jpg"]
 	}],
 	display:function(){
-		for(index in projects.projects){
+		for(var itemCount = 0; itemCount < projects.projects.length; itemCount++){
 			$("#projects").append(HTMLprojectStart);
-			$(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[index].title)+
-				HTMLprojectDates.replace("%data%", projects.projects[index].dates)+
-				HTMLprojectDescription.replace("%data%", projects.projects[index].description)
+			$(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[itemCount].title)+
+				HTMLprojectDates.replace("%data%", projects.projects[itemCount].dates)+
+				HTMLprojectDescription.replace("%data%", projects.projects[itemCount].description)
 			);
-			for(imgIndex in projects.projects[index].images){
-				$(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[index].images[imgIndex]));
+			for(var imgIndex = 0; imgIndex < projects.projects[itemCount].images.length; imgIndex++){
+				$(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[itemCount].images[imgIndex]));
 			}
 		}
 	}
